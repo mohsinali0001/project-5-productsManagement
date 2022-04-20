@@ -16,7 +16,7 @@ let uploadFile = async (file) => {
         var uploadParams = {
             ACL: "public-read",
             Bucket: "classroom-training-bucket", // HERE
-            Key: "batman/" + file.originalname, // HERE 
+            Key: "Shrati/" + file.originalname, // HERE "radhika/smiley.jpg"
             Body: file.buffer
         }
 

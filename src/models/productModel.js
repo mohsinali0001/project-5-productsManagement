@@ -13,18 +13,17 @@ const productSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        required: true,
-        // valid number/decimal
+        required: true
     },
     currencyId: {
         type: String,
-        required: true,
-        //INR
+        required: true
+        
     },
     currencyFormat: {
         type: String,
         required: true
-        //Rupee symbol
+       
     },
     isFreeShipping: {
         type: Boolean,
@@ -33,7 +32,7 @@ const productSchema = new mongoose.Schema({
     productImage: {
         type: String,
         required: true
-    },  // s3 link
+    }, 
     
     style: String,
 
@@ -54,5 +53,5 @@ const productSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
-//creating a model from schema and export it 
+
 module.exports = mongoose.model('Product', productSchema)
