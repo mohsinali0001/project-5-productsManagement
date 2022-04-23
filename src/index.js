@@ -15,7 +15,7 @@ const mongoose = require('mongoose')
 
 mongoose.connect(
     "mongodb+srv://amir-thorium:NSE7ZdUlu4no9WRF@cluster0.gchuo.mongodb.net/Group19-Data-base-new?authSource=admin&replicaSet=atlas-cw2o95-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true", 
-    {useNewUrlParser: true,useUnifiedTopology: true,  useCreateIndex: true}
+    {useNewUrlParser: true}
 )
     .then(() => console.log('mongodb is connected'))
     .catch(err => console.log(err))

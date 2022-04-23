@@ -17,7 +17,7 @@ const isValidObjectId = function (ObjectId) {
     return mongoose.Types.ObjectId.isValid(ObjectId)
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------
 
 let createOrder = async function (req, res) {
     try {
@@ -45,10 +45,11 @@ let createOrder = async function (req, res) {
             return res.status(400).send({ status: false, message: "Enter cart details" });
         }
 
-        const { cartId } = requestBody;
+        const { cartId, cancellable } = requestBody;
         if (!isValid(cartId)) {
             return res.status(400).send({ status: false, message: "Enter the cartId" });
         }
+
 
         if (!isValidObjectId(cartId)) {
             return res.status(400).send({ status: false, message: "Enter a valid cartId" });
@@ -71,6 +72,7 @@ let createOrder = async function (req, res) {
             let itemsArr = cartAlreadyPresent.items
             for (i in itemsArr) {
                     totalQuantity+=itemsArr[i].quantity
+                
                     
             }
         
@@ -79,7 +81,8 @@ let createOrder = async function (req, res) {
             items:cartAlreadyPresent.items,
             totalPrice:totalPrice,
             totalItems:totalItems,
-            totalQuantity:totalQuantity
+            totalQuantity:totalQuantity,
+            cancellable:cancellable
         };
 
         orderData = await orderModel.create(newOrder);
@@ -87,11 +90,19 @@ let createOrder = async function (req, res) {
      
     }
     catch (error) {
+        console.log(error)
         return res.status(500).send({ status: false, message: error.message })
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
 
 const updateOrder = async function (req, res) {
     try {
@@ -153,7 +164,7 @@ const updateOrder = async function (req, res) {
             return res.status(200).send({ status: false, message: "Order cancelled Successfully", data: updatedData });
         }
 
-        return res.status(400).send({ status: false, message: "You're not cancel this product" });
+        return res.status(400).send({ status: false, message: "You can't cancel this product" });
     }
     catch (error) {
         return res.status(500).send({ status: false, message: error.message })

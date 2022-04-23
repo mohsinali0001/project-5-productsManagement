@@ -214,7 +214,7 @@ const loginUser = async (req, res) => {
             userId: userMatch._id,
             iat: Math.floor(Date.now() / 1000),
             exp: Math.floor(Date.now() / 1000) + (10 * 60 * 60)
-        }, "Secret-Key-given-by-us-to-secure-our-token")
+        }, "Bruce-Wayane")
 
         return res.status(200).send({
             status: true, message: "You are successfully logged in",

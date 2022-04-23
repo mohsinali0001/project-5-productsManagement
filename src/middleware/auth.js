@@ -12,7 +12,7 @@ let authenticateUser = function (req, res, next) {
              token=token.slice(7,token.length)
          }
 
-        let decodedToken = jwt.verify(token, 'Secret-Key-given-by-us-to-secure-our-token')
+        let decodedToken = jwt.verify(token, 'Bruce-Wayane')
         if (!decodedToken) {
             return res.status(401).send({ status: false, message: "token is invalid" })
         }
